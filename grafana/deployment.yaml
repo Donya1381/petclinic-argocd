@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: grafana
-          image: spring-petclinic-microservices-grafana-server:v1
+          image: 192.168.56.108:30500/spring-petclinic-microservices-grafana-server:v1
           imagePullPolicy: IfNotPresent
 
           ports:
