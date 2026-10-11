@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visits-service
+  namespace: petclinic-app
+  labels:
+    app: visits-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: visits-service
+  template:
+    metadata:
+      labels:
+        app: visits-service
+    spec:
+      containers:
+        - name: visits-service
+          image: 192.168.56.108:30500/spring-petclinic-visits-service:v1
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: http
+              containerPort: 8082
+              protocol: TCP
+
+          resources:
+            limits:
+              memory: 512Mi
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8082
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8082
+            initialDelaySeconds: 60
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
