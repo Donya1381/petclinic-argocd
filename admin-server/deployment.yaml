@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: admin-server
-          image: 192.168.56.108:30500/spring-petclinic-admin-server:v1
+          image: 192.168.56.114/petclinic-microservice/spring-petclinic-admin-server:71af386
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

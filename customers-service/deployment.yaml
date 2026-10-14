@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: customers-service
-          image: 192.168.56.108:30500/spring-petclinic-customers-service:v1
+          image: 192.168.56.114/petclinic-microservice/spring-petclinic-customers-service:71af386
           imagePullPolicy: IfNotPresent
 
           ports:
